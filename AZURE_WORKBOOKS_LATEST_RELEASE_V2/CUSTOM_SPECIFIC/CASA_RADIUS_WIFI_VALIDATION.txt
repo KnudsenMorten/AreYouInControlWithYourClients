@@ -1,0 +1,245 @@
+{
+  "version": "Notebook/1.0",
+  "items": [
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "SecurityEvent\r\n| where (Computer contains \"CASA-MGMT\")\r\n| where (EventID == 6272) or (EventID == 6273)\r\n| summarize hint.strategy=partitioned arg_max(TimeGenerated, *) by Account\r\n| where EventID == 6273\r\n| project TimeGenerated, Account, ClientIPAddress, Activity, ProxyPolicyName\r\n| sort by TimeGenerated desc",
+        "size": 0,
+        "showAnalytics": true,
+        "title": "OLD (CASA-MGMT) | RADIUS | Devices with Connectivity Failures (all events)",
+        "timeContext": {
+          "durationMs": 86400000
+        },
+        "showExportToExcel": true,
+        "queryType": 0,
+        "resourceType": "microsoft.operationalinsights/workspaces",
+        "crossComponentResources": [
+          "/subscriptions/eada95ac-0b22-40dd-bbd7-caa457268860/resourceGroups/WE-RG-MONITORING-P/providers/Microsoft.OperationalInsights/workspaces/CASA-SRVCLOUD"
+        ],
+        "gridSettings": {
+          "rowLimit": 10000
+        }
+      },
+      "name": "OLD (CASA-MGMT) | RADIUS | Devices with Connectivity Failures (all events)"
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "SecurityEvent\r\n| where (Computer contains \"AZWE-S-RADI\")\r\n| where (EventID == 6272) or (EventID == 6273)\r\n| summarize hint.strategy=partitioned arg_max(TimeGenerated, *) by Account\r\n| where EventID == 6273\r\n| project TimeGenerated, Account, ClientIPAddress, Activity, ProxyPolicyName\r\n| sort by TimeGenerated desc",
+        "size": 0,
+        "showAnalytics": true,
+        "title": "NEW (AZWE-S-RADI-P0x) | RADIUS | Devices with Connectivity Failures (all events)",
+        "timeContext": {
+          "durationMs": 86400000
+        },
+        "showExportToExcel": true,
+        "queryType": 0,
+        "resourceType": "microsoft.operationalinsights/workspaces",
+        "crossComponentResources": [
+          "/subscriptions/eada95ac-0b22-40dd-bbd7-caa457268860/resourceGroups/WE-RG-MONITORING-P/providers/Microsoft.OperationalInsights/workspaces/CASA-SRVCLOUD"
+        ],
+        "gridSettings": {
+          "rowLimit": 10000
+        }
+      },
+      "name": "NEW (AZWE-S-RADI-P0x) | RADIUS | Devices with Connectivity Failures (all events)"
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "SecurityEvent\r\n| where (Computer contains \"CASA-MGMT\")\r\n| where (EventID == 6272) or (EventID == 6273)\r\n| summarize hint.strategy=partitioned arg_max(TimeGenerated, *) by Account\r\n| where EventID == 6273\r\n| summarize total = count(Account)",
+        "size": 0,
+        "showAnalytics": true,
+        "title": "OLD (CASA-MGMT) | RADIUS | Devices with Connectivity Failures (count)",
+        "timeContext": {
+          "durationMs": 86400000
+        },
+        "showExportToExcel": true,
+        "queryType": 0,
+        "resourceType": "microsoft.operationalinsights/workspaces",
+        "crossComponentResources": [
+          "/subscriptions/eada95ac-0b22-40dd-bbd7-caa457268860/resourceGroups/WE-RG-MONITORING-P/providers/Microsoft.OperationalInsights/workspaces/CASA-SRVCLOUD"
+        ],
+        "visualization": "tiles",
+        "gridSettings": {
+          "rowLimit": 10000
+        },
+        "tileSettings": {
+          "titleContent": {},
+          "leftContent": {
+            "columnMatch": "total",
+            "formatter": 12,
+            "formatOptions": {
+              "min": 0,
+              "palette": "redBright"
+            }
+          },
+          "showBorder": false
+        }
+      },
+      "name": "OLD (CASA-MGMT) | RADIUS | Devices with Connectivity Failures (count)"
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "SecurityEvent\r\n| where (Computer contains \"AZWE-S-RADI\")\r\n| where (EventID == 6272) or (EventID == 6273)\r\n| summarize hint.strategy=partitioned arg_max(TimeGenerated, *) by Account\r\n| where EventID == 6273\r\n| summarize total = count(Account)",
+        "size": 0,
+        "showAnalytics": true,
+        "title": "NEW (AZWE-S-RADI-P0x) | RADIUS | Devices with Connectivity Failures (count)",
+        "timeContext": {
+          "durationMs": 3600000
+        },
+        "showExportToExcel": true,
+        "queryType": 0,
+        "resourceType": "microsoft.operationalinsights/workspaces",
+        "crossComponentResources": [
+          "/subscriptions/eada95ac-0b22-40dd-bbd7-caa457268860/resourceGroups/WE-RG-MONITORING-P/providers/Microsoft.OperationalInsights/workspaces/CASA-SRVCLOUD"
+        ],
+        "visualization": "tiles",
+        "gridSettings": {
+          "rowLimit": 10000
+        },
+        "tileSettings": {
+          "titleContent": {},
+          "leftContent": {
+            "columnMatch": "total",
+            "formatter": 12,
+            "formatOptions": {
+              "min": 0,
+              "palette": "redBright"
+            }
+          },
+          "showBorder": false
+        }
+      },
+      "name": "NEW (AZWE-S-RADI-P0x) | RADIUS | Devices with Connectivity Failures (count)"
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "SecurityEvent\r\n| where (Computer contains \"CASA-MGMT\")\r\n| where (EventID == 6272) or (EventID == 6273)\r\n| summarize hint.strategy=partitioned arg_max(TimeGenerated, *) by Account\r\n| where EventID == 6272\r\n| summarize total = count(Account)",
+        "size": 0,
+        "showAnalytics": true,
+        "title": "OLD (CASA-MGMT) | RADIUS | Devices Connected Succesfully (count)",
+        "timeContext": {
+          "durationMs": 86400000
+        },
+        "showExportToExcel": true,
+        "queryType": 0,
+        "resourceType": "microsoft.operationalinsights/workspaces",
+        "crossComponentResources": [
+          "/subscriptions/eada95ac-0b22-40dd-bbd7-caa457268860/resourceGroups/WE-RG-MONITORING-P/providers/Microsoft.OperationalInsights/workspaces/CASA-SRVCLOUD"
+        ],
+        "visualization": "tiles",
+        "gridSettings": {
+          "rowLimit": 10000
+        },
+        "tileSettings": {
+          "titleContent": {},
+          "leftContent": {
+            "columnMatch": "total",
+            "formatter": 12,
+            "formatOptions": {
+              "min": 0,
+              "palette": "green"
+            }
+          },
+          "showBorder": false
+        }
+      },
+      "name": "OLD (CASA-MGMT) | RADIUS | Devices Connected Succesfully (count)"
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "SecurityEvent\r\n| where (Computer contains \"AZWE-S-RADI\")\r\n| where (EventID == 6272) or (EventID == 6273)\r\n| summarize hint.strategy=partitioned arg_max(TimeGenerated, *) by Account\r\n| where EventID == 6272\r\n| summarize total = count(Account)",
+        "size": 0,
+        "showAnalytics": true,
+        "title": "NEW (AZWE-S-RADI-P0x) | RADIUS | Devices Connected Succesfully (count)",
+        "timeContext": {
+          "durationMs": 14400000
+        },
+        "showExportToExcel": true,
+        "queryType": 0,
+        "resourceType": "microsoft.operationalinsights/workspaces",
+        "crossComponentResources": [
+          "/subscriptions/eada95ac-0b22-40dd-bbd7-caa457268860/resourceGroups/WE-RG-MONITORING-P/providers/Microsoft.OperationalInsights/workspaces/CASA-SRVCLOUD"
+        ],
+        "visualization": "tiles",
+        "gridSettings": {
+          "rowLimit": 10000
+        },
+        "tileSettings": {
+          "titleContent": {},
+          "leftContent": {
+            "columnMatch": "total",
+            "formatter": 12,
+            "formatOptions": {
+              "min": 0,
+              "palette": "green"
+            }
+          },
+          "showBorder": false
+        }
+      },
+      "name": "NEW (AZWE-S-RADI-P0x) | RADIUS | Devices Connected Succesfully (count)"
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "SecurityEvent\r\n| where (Computer contains \"CASA-MGMT\")\r\n| where (EventID == 6272) or (EventID == 6273)\r\n| summarize hint.strategy=partitioned arg_max(TimeGenerated, *) by Account\r\n| where EventID == 6272\r\n| project TimeGenerated, Account, ClientIPAddress, Activity, ProxyPolicyName\r\n| sort by TimeGenerated desc",
+        "size": 0,
+        "showAnalytics": true,
+        "title": "OLD (CASA-MGMT) | RADIUS | Devices Connected Succesfully (latest event)",
+        "timeContext": {
+          "durationMs": 86400000
+        },
+        "showExportToExcel": true,
+        "queryType": 0,
+        "resourceType": "microsoft.operationalinsights/workspaces",
+        "crossComponentResources": [
+          "/subscriptions/eada95ac-0b22-40dd-bbd7-caa457268860/resourceGroups/WE-RG-MONITORING-P/providers/Microsoft.OperationalInsights/workspaces/CASA-SRVCLOUD"
+        ],
+        "gridSettings": {
+          "rowLimit": 10000
+        }
+      },
+      "name": "OLD (CASA-MGMT) | RADIUS | Devices Connected Succesfully (latest event)"
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "SecurityEvent\r\n| where (Computer contains \"AZWE-S-RADI\")\r\n| where (EventID == 6272) or (EventID == 6273)\r\n| summarize hint.strategy=partitioned arg_max(TimeGenerated, *) by Account\r\n| where EventID == 6272\r\n| project TimeGenerated, Account, ClientIPAddress, Activity, ProxyPolicyName\r\n| sort by TimeGenerated desc",
+        "size": 0,
+        "showAnalytics": true,
+        "title": "NEW (AZWE-S-RADI-P0x) | RADIUS | Devices Connected Succesfully (latest event)",
+        "timeContext": {
+          "durationMs": 86400000
+        },
+        "showExportToExcel": true,
+        "queryType": 0,
+        "resourceType": "microsoft.operationalinsights/workspaces",
+        "crossComponentResources": [
+          "/subscriptions/eada95ac-0b22-40dd-bbd7-caa457268860/resourceGroups/WE-RG-MONITORING-P/providers/Microsoft.OperationalInsights/workspaces/CASA-SRVCLOUD"
+        ],
+        "gridSettings": {
+          "rowLimit": 10000
+        }
+      },
+      "name": "NEW (AZWE-S-RADI-P0x) | RADIUS | Devices Connected Succesfully (latest event)"
+    }
+  ],
+  "fallbackResourceIds": [
+    "Azure Monitor"
+  ],
+  "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/workbook.json"
+}

@@ -1,0 +1,45 @@
+{
+  "version": "Notebook/1.0",
+  "items": [
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "AzureActivity \r\n| where TimeGenerated > now(-31d)\r\n//| where Caller !contains \"SVC-Azure-Automation@casa-as.dk\"\r\n//| where Caller !contains \"extmok@casa-as.dk\"\r\n| where ResourceGroup contains \"WE-RG-IT-PALOALTO-P\"\r\n//| where ServicePrincipalName contains \"Service Account - Palo Alto API\"\r\n// Caller = 61c1eb3a-9b52-4146-9a75-abf0340521d1\r\n| where Caller contains \"61c1eb3a-9b52-4146-9a75-abf0340521d1\"\r\n| project TimeGenerated, OperationName, ActivityStatus, OperationNameValue, Resource, Caller\r\n| sort by TimeGenerated desc\r\n",
+        "size": 0,
+        "title": "PALO ALTO API ACTIVITIES",
+        "queryType": 0,
+        "resourceType": "microsoft.operationalinsights/workspaces",
+        "crossComponentResources": [
+          "/subscriptions/eada95ac-0b22-40dd-bbd7-caa457268860/resourceGroups/WE-RG-MONITORING-P/providers/Microsoft.OperationalInsights/workspaces/CASA-SRVCLOUD"
+        ],
+        "gridSettings": {
+          "rowLimit": 10000
+        }
+      },
+      "name": "PALO ALTO API ACTIVITIES"
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "AADServicePrincipalSignInLogs \r\n| where TimeGenerated > now(-31d)\r\n| where ServicePrincipalName contains \"Service Account - Palo Alto API\"\r\n| project TimeGenerated, ServicePrincipalName, ResourceDisplayName, ResourceIdentity, ServicePrincipalId, IPAddress, AppId, Id, Category, LocationDetails\r\n| sort by TimeGenerated desc\r\n",
+        "size": 0,
+        "title": "PALO ALTO API SIGN-INS",
+        "queryType": 0,
+        "resourceType": "microsoft.operationalinsights/workspaces",
+        "crossComponentResources": [
+          "/subscriptions/eada95ac-0b22-40dd-bbd7-caa457268860/resourceGroups/WE-RG-MONITORING-P/providers/Microsoft.OperationalInsights/workspaces/CASA-SRVCLOUD"
+        ],
+        "gridSettings": {
+          "rowLimit": 10000
+        }
+      },
+      "name": "PALO ALTO API SIGN-INS"
+    }
+  ],
+  "fallbackResourceIds": [
+    "Azure Monitor"
+  ],
+  "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/workbook.json"
+}
